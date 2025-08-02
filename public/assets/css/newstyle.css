@@ -1,0 +1,34 @@
+body {
+    background-color: #f6bd08;
+    background-image: url(../images/header/all-bg.jpg);
+    font-family: 'Righteous', cursive;
+    background-position: top;
+    background-size: cover;
+}
+/* Header-start */
+.navbar-bg {
+    background-color: #ff2d20;
+    background-image: url(../images/header/menu-bg.jpg);
+    background-position: right top;
+    background-repeat: no-repeat;
+    border: none;
+}
+.nav-link, .dropdown-item {
+    font-family: 'Righteous', cursive;
+    color: #f1f1f1 !important;
+    font-size: 1.2em;
+}
+
+/* Footer */
+.footer-links {
+    list-style: none;
+    padding-left: 0;
+}
+.footer-links li {
+    display: inline-block;
+    padding: 0 12px;
+}
+.footer-links a
+{
+    color: #242424;
+}
