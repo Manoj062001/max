@@ -2,18 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Models\ProductModel;
-use Exception;
-
 class Product extends BaseController
 {
     private $data;
-    private $productModel;
 
     public function __construct()
     {
         $this->data = [];
-        $this->productModel = new ProductModel();
         
         $this->data['title'] = 'Products - Maxvita Foods Pvt Ltd';
         $this->data['meta_description'] = '';
@@ -27,9 +22,6 @@ class Product extends BaseController
         $this->data['active'] = 'potato-chips';
         $this->data['category'] = 'Potato Chips';
         $this->data['category_slug'] = 'potato-chips';
-        
-        // Fetch products from database
-        $this->data['products'] = $this->productModel->getProductsByCategory('Potato Chips');
 
         return view('main/layouts/header', $this->data)
             . view('main/products/potato-chips', $this->data)
@@ -43,9 +35,6 @@ class Product extends BaseController
         $this->data['active'] = 'corn-snacks';
         $this->data['category'] = 'Baked Corn Snacks';
         $this->data['category_slug'] = 'corn-snacks';
-        
-        // Fetch products from database
-        $this->data['products'] = $this->productModel->getProductsByCategory('Corn Snacks');
 
         return view('main/layouts/header', $this->data)
             . view('main/products/corn-snacks', $this->data)
@@ -54,24 +43,15 @@ class Product extends BaseController
 
     public function rusksCookies(): string
     {
-        try {
-                    $this->data['title'] = 'Rusks and Cookies - Maxvita Foods';
+        $this->data['title'] = 'Rusks and Cookies - Maxvita Foods';
         $this->data['meta_description'] = 'Discover our premium range of rusks and cookies including Choco Cookies, Butter Cookies, Fruit Rusk, Premium Milk Rusk, and Premium Crunchy Rusk. Available in various pack sizes.';
         $this->data['active'] = 'rusks-and-cookies';
         $this->data['category'] = 'Rusks and Cookies';
         $this->data['category_slug'] = 'rusks-and-cookies';
-            
-            // Fetch products from database
-            $this->data['products'] = $this->productModel->getProductsByCategory('Rusks and Cookies');
 
-            return view('main/layouts/header', $this->data)
-                . view('main/products/rusks-cookies', $this->data)
-                . view('main/layouts/footer', $this->data);
-        } catch (Exception $e) {
-            log_message('error', 'Rusks and Cookies page error: ' . $e->getMessage());
-            // Return a simple error page
-            return '<h1>Error</h1><p>Unable to load products. Please try again later.</p>';
-        }
+        return view('main/layouts/header', $this->data)
+            . view('main/products/rusks-cookies', $this->data)
+            . view('main/layouts/footer', $this->data);
     }
 
     public function namkeenSnacks(): string
@@ -81,9 +61,6 @@ class Product extends BaseController
         $this->data['active'] = 'namkeen-snacks';
         $this->data['category'] = 'Namkeen Snacks';
         $this->data['category_slug'] = 'namkeen-snacks';
-        
-        // Fetch products from database
-        $this->data['products'] = $this->productModel->getProductsByCategory('Namkeen Snacks');
 
         return view('main/layouts/header', $this->data)
             . view('main/products/namkeen-snacks', $this->data)
@@ -97,13 +74,9 @@ class Product extends BaseController
         $this->data['active'] = 'fryums-snacks';
         $this->data['category'] = 'Fryums Snacks';
         $this->data['category_slug'] = 'fryums-snacks';
-        
-        // Fetch products from database
-        $this->data['products'] = $this->productModel->getProductsByCategory('Fryums Snacks');
 
         return view('main/layouts/header', $this->data)
             . view('main/products/fryums-snacks', $this->data)
             . view('main/layouts/footer', $this->data);
     }
-
 } 

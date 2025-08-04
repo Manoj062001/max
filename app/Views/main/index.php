@@ -132,33 +132,11 @@
             <h2>Most Popular</h2>
         </div>
     </div>
-    <div class="text-center popularrow owl-carousel owl-theme owl-carousel-pro wow bounceInUp owl-loaded owl-drag" style="visibility: visible; animation-name: bounceInUp;">
-        <?php if (!empty($popular_products)): ?>
-            <?php foreach ($popular_products as $index => $product): ?>
-                <div class="item popularproduct">
-                    <?php if ($product['new'] == 1): ?>
-                        <img class="newbadge" src="<?= base_url('assets/images/icons/new.png') ?>">
-                    <?php endif; ?>
-                    <img class="ppimg" src="<?= base_url('assets/images/products/' . $product['image']) ?>" width="100%" alt="<?= esc($product['name']) ?>">
-                    <h5><?= esc($product['name']) ?></h5>
-                    <a href="item?id=<?= $product['id'] ?>" class="btn btn-primary btn-popularview btn-view">Details</a>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <!-- Fallback content if no popular products found -->
-            <div class="item popularproduct">
-                <img class="ppimg" src="<?= base_url('assets/images/products/default-product.jpg') ?>" width="100%" alt="Default Product">
-                <h5>No Popular Products Available</h5>
-                <a href="#" class="btn btn-primary btn-popularview btn-view">Details</a>
-            </div>
-        <?php endif; ?>
-    </div>
 </div>
 
 <div class="videocontainer mt-4">
     <video width="100%" controls="" poster="<?= base_url('assets/images/poster.jpg') ?>">
         <source src="<?= base_url('assets/maxvita.mp4') ?>" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
 </div>
 
