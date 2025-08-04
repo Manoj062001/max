@@ -27,6 +27,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Righteous&display=swap" rel="stylesheet">
+
+    <!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+   <!-- Owl Carousel CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+   <!-- Owl Carousel JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>   
+    
 </head>
 <body>
 <div class="container mt-3">
@@ -47,11 +58,11 @@
             Products
             </a>
             <div class="dropdown-menu imgdropdown" aria-labelledby="navbarDropdown">
-               <a class="dropdown-item potatochips" href="<?= base_url('potato-chips') ?>"><img src="<?= base_url('assets/images/product/tomato-ketchup.png') ?>" alt=""> Potato Chips</a>
-               <a class="dropdown-item bakedcornsnacks" href="<?= base_url('corn-snacks') ?>"><img src="<?= base_url('assets/images/product/corn-rings-chatpata-masala.png') ?>" alt=""> Baked Corn Snacks</a>
-               <a class="dropdown-item namkeensnacks" href="<?= base_url('namkeen-snacks') ?>"><img src="<?= base_url('assets/images/product/karumkure-chat-masala.png') ?>" alt=""> Namkeen Snacks</a>
-               <a class="dropdown-item fryumssnacks" href="<?= base_url('fryums-snacks') ?>"><img src="<?= base_url('assets/images/product/crunchy-noodles-veg-biriyani.png') ?>" alt=""> Fryums Snacks</a>
-               <a class="dropdown-item rusks" href="<?= base_url('rusks-and-cookies') ?>"><img src="<?= base_url('assets/images/product/premium-milk-rusk.png') ?>" alt=""> Rusks and Cookies</a>
+               <a class="dropdown-item potatochips" href="<?= base_url('potato-chips') ?>"><img src="<?= base_url('assets/images/product/tomato-ketchup.png') ?>" alt="Potato Chips"> Potato Chips</a>
+               <a class="dropdown-item bakedcornsnacks" href="<?= base_url('corn-snacks') ?>"><img src="<?= base_url('assets/images/product/corn-rings-chatpata-masala.png') ?>" alt="Baked Corn Snacks"> Baked Corn Snacks</a>
+               <a class="dropdown-item namkeensnacks" href="<?= base_url('namkeen-snacks') ?>"><img src="<?= base_url('assets/images/product/karumkure-chat-masala.png') ?>" alt="Namkeen Snacks"> Namkeen Snacks</a>
+               <a class="dropdown-item fryumssnacks" href="<?= base_url('fryums-snacks') ?>"><img src="<?= base_url('assets/images/product/crunchy-noodles-veg-biriyani.png') ?>" alt="Fryums Snacks"> Fryums Snacks</a>
+               <a class="dropdown-item rusks" href="<?= base_url('rusks-and-cookies') ?>"><img src="<?= base_url('assets/images/product/premium-milk-rusk.png') ?>" alt="Rusks and Cookies"> Rusks and Cookies</a>
             </div>
          </li>
          <li class="nav-item">

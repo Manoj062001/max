@@ -2,27 +2,30 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductModel;
+
 class Home extends BaseController
 {
     private $data;
+    private $productModel;
 
     public function __construct()
     {
         $this->data = [];
+        $this->productModel = new ProductModel();
         
         $this->data['title'] = 'Maxvita Foods Pvt Ltd';
         $this->data['meta_description'] = '';
         $this->data['active'] = '';
-        $this->data['indexPage'] = false;
-        $this->data['services_menu'] = [];
     }
 
     public function index(): string
     {
         $this->data['title'] = 'Maxvita Foods Pvt Ltd';
         $this->data['meta_description'] = 'Maxvita Foods is one of the leading snacks foods manufacturing companies in South India.';
-        $this->data['indexPage'] = true;
-        $this->data['active'] = 'index';
+        
+        // Fetch popular products
+        $this->data['popular_products'] = $this->productModel->getPopularProducts();
 
         return view('main/layouts/header', $this->data)
             . view('main/index', $this->data)
