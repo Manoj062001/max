@@ -8,7 +8,7 @@
     <meta name="author" content="manoj">
     <meta name="robots" content="noindex, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/imgs/favicon.ico') ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/images/favicon.ico') ?>">
 
     <meta property="og:title" content="<?= $title; ?>">
     <meta property="og:description" content="<?= $meta_description; ?>">
