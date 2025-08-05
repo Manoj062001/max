@@ -46,4 +46,15 @@ class Home extends BaseController
             . view('main/contact-us', $this->data)
             . view('main/layouts/footer', $this->data);
     }
+
+    public function terms(): string
+    {
+        $this->data['title'] = 'Terms and Conditions - Maxvita Foods';
+        $this->data['meta_description'] = 'Maxvita Foods is one of the leading snacks foods manufacturing companies in South India.';
+        $this->data['active'] = 'terms-and-conditions';
+
+        return view('main/layouts/header', $this->data)
+            . view('main/terms-and-conditions', $this->data)
+            . view('main/layouts/footer', $this->data);
+    }
 }

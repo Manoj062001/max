@@ -217,6 +217,92 @@
     </div>
 </div>
 
+<!-- Contact Section -->
+<div class="contactcontainer mt-4">
+    <div class="row rowheading wow bounceInUp" style="visibility: visible; animation-name: bounceInUp;">
+        <div class="col-sm-12">
+            <h2>Address</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 contact-address">
+            <div class="row">
+                <div class="col-2 text-right">
+                    <img src="<?= base_url('assets/images/icons/004-location.png') ?>" width="30" alt="Location">
+                </div>
+                <div class="col-10">
+                    <h5>MAXVITA foods india Pvt Ltd </h5>
+                    <p>Plot No 48, Behind NIEIT Engineering college</p>
+                    <p>Hebbal 2nd Phase Industrial Area,</p>
+                    <p>Anaganahalli, Mandya-571606</p>
+                    <p>Karnataka, India</p>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-2 text-right">
+                    <img src="<?= base_url('assets/images/icons/001-phone.png') ?>" width="30" alt="phone">
+                </div>
+                <div class="col-10">
+                    <p><a href="tel:0821 - 2975098">0821 - 2975098</a> | <a href="tel:+91 805 032 0101">+91 805 032 0101</a></p>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-2 text-right">
+                    <img src="<?= base_url('assets/images/icons/003-gmail.png') ?>" width="30" alt="gmail">
+                </div>
+                <div class="col-10">
+                    <p><a href="mailto:info@maxvitafoods.com">info@maxvitafoods.com</a></p>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-2 text-right">
+
+                </div>
+                <div class="col-10">
+                    <div class="soicons">
+                        <a href="https://www.facebook.com/MaxvitaFoodsofficial/" target="_new"> <i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i> </a>
+                        <a href="https://www.instagram.com/maxvita_foods/" target="_new"> <i class="fab fa-instagram fa-2x" aria-hidden="true"></i> </a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-5 contact-form">
+            <form id="home-contact-form" method="post" action="<?= base_url('forms/home-contact') ?>">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" id="name" required="">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" name="address" id="address" required="">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" rows="2" name="message" id="message" required=""></textarea>
+                </div>
+                <div class="text-center">
+                    <div class="alertmsg"></div>
+                    <button type="submit" class="btn btn-primary" id="home-contact">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15588.5608279532!2d76.5888553!3d12.3735392!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x20ad325a7ce1c8b0!2sMaxvita%20Foods!5e0!3m2!1sen!2sin!4v1675921002266!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+        </div>
+    </div>
+</div>
+
 
 <script>
 $(document).ready(function(){
@@ -298,21 +384,21 @@ $(document).ready(function(){
         var lightboxImg = $('<img src="' + currentImage.src + '" alt="' + currentImage.alt + '">');
         var closeBtn = $('<span class="lightbox-close" title="Close">&times;</span>');
         
-        // Create navigation
-        var lightboxNav = $('<div class="lightbox-nav"></div>');
-        var prevBtn = $('<button class="lightbox-prev" title="Previous">&lt;</button>');
-        var nextBtn = $('<button class="lightbox-next" title="Next">&gt;</button>');
+        // Create navigation (disabled)
+        // var lightboxNav = $('<div class="lightbox-nav"></div>');
+        // var prevBtn = $('<button class="lightbox-prev" title="Previous">&lt;</button>');
+        // var nextBtn = $('<button class="lightbox-next" title="Next">&gt;</button>');
         
-        // Create counter
-        var counter = $('<div class="lightbox-counter">' + (index + 1) + ' / ' + galleryImages.length + '</div>');
+        // Create counter (disabled)
+        // var counter = $('<div class="lightbox-counter">' + (index + 1) + ' / ' + galleryImages.length + '</div>');
         
         // Disable navigation buttons if needed
-        if (index === 0) prevBtn.prop('disabled', true);
-        if (index === galleryImages.length - 1) nextBtn.prop('disabled', true);
+        // if (index === 0) prevBtn.prop('disabled', true);
+        // if (index === galleryImages.length - 1) nextBtn.prop('disabled', true);
         
-        lightboxNav.append(prevBtn).append(nextBtn);
-        lightboxContent.append(closeBtn).append(lightboxImg).append(counter);
-        lightbox.append(lightboxContent).append(lightboxNav);
+        // lightboxNav.append(prevBtn).append(nextBtn);
+        lightboxContent.append(closeBtn).append(lightboxImg);
+        lightbox.append(lightboxContent);
         $('body').append(lightbox);
         
         // Prevent body scroll when lightbox is open
@@ -321,22 +407,22 @@ $(document).ready(function(){
         // Show lightbox with fade effect
         lightbox.fadeIn(300);
         
-        // Navigation functionality
-        prevBtn.on('click', function(e) {
-            e.stopPropagation();
-            if (currentImageIndex > 0) {
-                currentImageIndex--;
-                updateLightbox();
-            }
-        });
+        // Navigation functionality (disabled)
+        // prevBtn.on('click', function(e) {
+        //     e.stopPropagation();
+        //     if (currentImageIndex > 0) {
+        //         currentImageIndex--;
+        //         updateLightbox();
+        //     }
+        // });
         
-        nextBtn.on('click', function(e) {
-            e.stopPropagation();
-            if (currentImageIndex < galleryImages.length - 1) {
-                currentImageIndex++;
-                updateLightbox();
-            }
-        });
+        // nextBtn.on('click', function(e) {
+        //     e.stopPropagation();
+        //     if (currentImageIndex < galleryImages.length - 1) {
+        //         currentImageIndex++;
+        //         updateLightbox();
+        //     }
+        // });
         
         // Close lightbox on overlay click (but not on content click)
         lightbox.on('click', function(e) {
@@ -351,24 +437,24 @@ $(document).ready(function(){
             closeLightbox();
         });
         
-        // Keyboard navigation
+        // Keyboard navigation (disabled arrow keys)
         $(document).on('keydown.lightbox', function(e) {
             switch(e.keyCode) {
                 case 27: // ESC key
                     closeLightbox();
                     break;
-                case 37: // Left arrow
-                    if (currentImageIndex > 0) {
-                        currentImageIndex--;
-                        updateLightbox();
-                    }
-                    break;
-                case 39: // Right arrow
-                    if (currentImageIndex < galleryImages.length - 1) {
-                        currentImageIndex++;
-                        updateLightbox();
-                    }
-                    break;
+                // case 37: // Left arrow (disabled)
+                //     if (currentImageIndex > 0) {
+                //         currentImageIndex--;
+                //         updateLightbox();
+                //     }
+                //     break;
+                // case 39: // Right arrow (disabled)
+                //     if (currentImageIndex < galleryImages.length - 1) {
+                //         currentImageIndex++;
+                //         updateLightbox();
+                //     }
+                //     break;
             }
         });
         
@@ -376,11 +462,11 @@ $(document).ready(function(){
         function updateLightbox() {
             var newImage = galleryImages[currentImageIndex];
             lightboxImg.attr('src', newImage.src).attr('alt', newImage.alt);
-            counter.text((currentImageIndex + 1) + ' / ' + galleryImages.length);
+            // counter.text((currentImageIndex + 1) + ' / ' + galleryImages.length); // disabled
             
-            // Update navigation buttons
-            prevBtn.prop('disabled', currentImageIndex === 0);
-            nextBtn.prop('disabled', currentImageIndex === galleryImages.length - 1);
+            // Update navigation buttons (disabled)
+            // prevBtn.prop('disabled', currentImageIndex === 0);
+            // nextBtn.prop('disabled', currentImageIndex === galleryImages.length - 1);
             
             // Reset image animation
             lightboxImg.removeClass('loaded');

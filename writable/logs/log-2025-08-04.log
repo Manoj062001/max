@@ -38,3 +38,31 @@ in APPPATH\Views\main\products\corn-snacks.php on line 11.
 10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\max\\public\\index.php')
+CRITICAL - 2025-08-04 14:26:07 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "main/layouts/default.php"
+[Method: GET, Route: terms-and-conditions]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('main/layouts/default.php')
+ 2 SYSTEMPATH\View\View.php(242): CodeIgniter\View\View->render('main/layouts/default', [], true)
+ 3 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('main/terms-and-conditions', [], true)
+ 4 APPPATH\Controllers\Home.php(57): view('main/terms-and-conditions', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->terms()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\max\\public\\index.php')
+CRITICAL - 2025-08-04 14:26:10 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "main/layouts/default.php"
+[Method: GET, Route: terms-and-conditions]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('main/layouts/default.php')
+ 2 SYSTEMPATH\View\View.php(242): CodeIgniter\View\View->render('main/layouts/default', [], true)
+ 3 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('main/terms-and-conditions', [], true)
+ 4 APPPATH\Controllers\Home.php(57): view('main/terms-and-conditions', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->terms()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\max\\public\\index.php')
