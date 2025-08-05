@@ -132,6 +132,16 @@
             <h2>Most Popular</h2>
         </div>
     </div>
+    <div class="text-center popularrow owl-carousel owl-theme owl-carousel-pro  wow bounceInUp">
+        <?php foreach ($products as $product) :  ?>
+            <div class="item popularproduct">
+                <img class="newbadge" src="img/icons/new.png">
+                <img class="ppimg" src="<?= base_url('assets/images/products/' . esc($product['image'])) ?>" width="100%" alt="">
+                <h5><?= esc($product['name']) ?></h5>
+                <a href="<?= base_url('product/' . esc($product['slug'])) ?>" class="btn btn-primary btn-popularview">Details</a>
+            </div>
+        <?php endforeach ?>
+    </div>
 </div>
 
 <div class="videocontainer mt-4">
@@ -305,189 +315,222 @@
 
 
 <script>
-$(document).ready(function(){
-    var carouselOptions={
-        loop:true,margin:0,nav:true,dots:false,autoplay:true,autoplayTimeout:5000,autoplayHoverPause:true,
-        responsive:{0:{items:1},600:{items:1},1000:{items:1}},
-        navText:['<span class="nav-btn">&lt;</span>','<span class="nav-btn">&gt;</span>'],
-        smartSpeed:600,dragEndSpeed:600,touchDrag:true,mouseDrag:true,pullDrag:true,freeDrag:false
-    };
-    $('#desktopcaro').length&&$('#desktopcaro').owlCarousel(carouselOptions);
-    $('#mobilecaro').length&&$('#mobilecaro').owlCarousel(carouselOptions);
-    
-    // Categories carousel
-    $('.owl-carousel-cat').owlCarousel({
-        loop: true,
-        margin: 0,
-        nav: false,
-        dots: true,
-        autoplay: true,
-        autoplayTimeout: 4000,
-        autoplayHoverPause: true,
-        responsive: {
-            0: { items: 1 },
-            600: { items: 2 },
-            1000: { items: 3 }
-        },
-        touchDrag: true,
-        mouseDrag: true,
-        pullDrag: true,
-        freeDrag: false
-    });
-    
-    // Most Popular carousel
-    $('.owl-carousel-pro').owlCarousel({
-        loop: true,
-        margin: 20,
-        nav: true,
-        dots: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        responsive: {
-            0: { items: 1 },
-            600: { items: 2 },
-            1000: { items: 4 }
-        },
-        touchDrag: true,
-        mouseDrag: true,
-        pullDrag: true,
-        freeDrag: false
-    });
-    
-    // Gallery Lightbox functionality
-    var currentImageIndex = 0;
-    var galleryImages = [];
-    
-    // Collect all gallery images
-    $('.gallery-item').each(function() {
-        galleryImages.push({
-            src: $(this).attr('href'),
-            alt: $(this).find('img').attr('alt')
+    $(document).ready(function() {
+        var carouselOptions = {
+            loop: true,
+            margin: 0,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            },
+            navText: ['<span class="nav-btn">&lt;</span>', '<span class="nav-btn">&gt;</span>'],
+            smartSpeed: 600,
+            dragEndSpeed: 600,
+            touchDrag: true,
+            mouseDrag: true,
+            pullDrag: true,
+            freeDrag: false
+        };
+        $('#desktopcaro').length && $('#desktopcaro').owlCarousel(carouselOptions);
+        $('#mobilecaro').length && $('#mobilecaro').owlCarousel(carouselOptions);
+
+        // Categories carousel
+        $('.owl-carousel-cat').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            },
+            touchDrag: true,
+            mouseDrag: true,
+            pullDrag: true,
+            freeDrag: false
         });
-    });
-    
-    $('.gallery-item').on('click', function(e) {
-        e.preventDefault();
-        currentImageIndex = $(this).closest('.imgdiv').index();
-        showLightbox(currentImageIndex);
-    });
-    
-    function showLightbox(index) {
-        if (index < 0 || index >= galleryImages.length) return;
-        
-        var currentImage = galleryImages[index];
-        
-        // Create lightbox overlay
-        var lightbox = $('<div class="lightbox-overlay"></div>');
-        var lightboxContent = $('<div class="lightbox-content"></div>');
-        var lightboxImg = $('<img src="' + currentImage.src + '" alt="' + currentImage.alt + '">');
-        var closeBtn = $('<span class="lightbox-close" title="Close">&times;</span>');
-        
-        // Create navigation (disabled)
-        // var lightboxNav = $('<div class="lightbox-nav"></div>');
-        // var prevBtn = $('<button class="lightbox-prev" title="Previous">&lt;</button>');
-        // var nextBtn = $('<button class="lightbox-next" title="Next">&gt;</button>');
-        
-        // Create counter (disabled)
-        // var counter = $('<div class="lightbox-counter">' + (index + 1) + ' / ' + galleryImages.length + '</div>');
-        
-        // Disable navigation buttons if needed
-        // if (index === 0) prevBtn.prop('disabled', true);
-        // if (index === galleryImages.length - 1) nextBtn.prop('disabled', true);
-        
-        // lightboxNav.append(prevBtn).append(nextBtn);
-        lightboxContent.append(closeBtn).append(lightboxImg);
-        lightbox.append(lightboxContent);
-        $('body').append(lightbox);
-        
-        // Prevent body scroll when lightbox is open
-        $('body').css('overflow', 'hidden');
-        
-        // Show lightbox with fade effect
-        lightbox.fadeIn(300);
-        
-        // Navigation functionality (disabled)
-        // prevBtn.on('click', function(e) {
-        //     e.stopPropagation();
-        //     if (currentImageIndex > 0) {
-        //         currentImageIndex--;
-        //         updateLightbox();
-        //     }
-        // });
-        
-        // nextBtn.on('click', function(e) {
-        //     e.stopPropagation();
-        //     if (currentImageIndex < galleryImages.length - 1) {
-        //         currentImageIndex++;
-        //         updateLightbox();
-        //     }
-        // });
-        
-        // Close lightbox on overlay click (but not on content click)
-        lightbox.on('click', function(e) {
-            if ($(e.target).hasClass('lightbox-overlay')) {
-                closeLightbox();
-            }
+
+        // Most Popular carousel
+        $('.owl-carousel-pro').owlCarousel({
+            loop: true,
+            margin: 20,
+            nav: true,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            },
+            touchDrag: true,
+            mouseDrag: true,
+            pullDrag: true,
+            freeDrag: false
         });
-        
-        // Close lightbox on close button click
-        closeBtn.on('click', function(e) {
-            e.stopPropagation();
-            closeLightbox();
+
+        // Gallery Lightbox functionality
+        var currentImageIndex = 0;
+        var galleryImages = [];
+
+        // Collect all gallery images
+        $('.gallery-item').each(function() {
+            galleryImages.push({
+                src: $(this).attr('href'),
+                alt: $(this).find('img').attr('alt')
+            });
         });
-        
-        // Keyboard navigation (disabled arrow keys)
-        $(document).on('keydown.lightbox', function(e) {
-            switch(e.keyCode) {
-                case 27: // ESC key
+
+        $('.gallery-item').on('click', function(e) {
+            e.preventDefault();
+            currentImageIndex = $(this).closest('.imgdiv').index();
+            showLightbox(currentImageIndex);
+        });
+
+        function showLightbox(index) {
+            if (index < 0 || index >= galleryImages.length) return;
+
+            var currentImage = galleryImages[index];
+
+            // Create lightbox overlay
+            var lightbox = $('<div class="lightbox-overlay"></div>');
+            var lightboxContent = $('<div class="lightbox-content"></div>');
+            var lightboxImg = $('<img src="' + currentImage.src + '" alt="' + currentImage.alt + '">');
+            var closeBtn = $('<span class="lightbox-close" title="Close">&times;</span>');
+
+            // Create navigation (disabled)
+            // var lightboxNav = $('<div class="lightbox-nav"></div>');
+            // var prevBtn = $('<button class="lightbox-prev" title="Previous">&lt;</button>');
+            // var nextBtn = $('<button class="lightbox-next" title="Next">&gt;</button>');
+
+            // Create counter (disabled)
+            // var counter = $('<div class="lightbox-counter">' + (index + 1) + ' / ' + galleryImages.length + '</div>');
+
+            // Disable navigation buttons if needed
+            // if (index === 0) prevBtn.prop('disabled', true);
+            // if (index === galleryImages.length - 1) nextBtn.prop('disabled', true);
+
+            // lightboxNav.append(prevBtn).append(nextBtn);
+            lightboxContent.append(closeBtn).append(lightboxImg);
+            lightbox.append(lightboxContent);
+            $('body').append(lightbox);
+
+            // Prevent body scroll when lightbox is open
+            $('body').css('overflow', 'hidden');
+
+            // Show lightbox with fade effect
+            lightbox.fadeIn(300);
+
+            // Navigation functionality (disabled)
+            // prevBtn.on('click', function(e) {
+            //     e.stopPropagation();
+            //     if (currentImageIndex > 0) {
+            //         currentImageIndex--;
+            //         updateLightbox();
+            //     }
+            // });
+
+            // nextBtn.on('click', function(e) {
+            //     e.stopPropagation();
+            //     if (currentImageIndex < galleryImages.length - 1) {
+            //         currentImageIndex++;
+            //         updateLightbox();
+            //     }
+            // });
+
+            // Close lightbox on overlay click (but not on content click)
+            lightbox.on('click', function(e) {
+                if ($(e.target).hasClass('lightbox-overlay')) {
                     closeLightbox();
-                    break;
-                // case 37: // Left arrow (disabled)
-                //     if (currentImageIndex > 0) {
-                //         currentImageIndex--;
-                //         updateLightbox();
-                //     }
-                //     break;
-                // case 39: // Right arrow (disabled)
-                //     if (currentImageIndex < galleryImages.length - 1) {
-                //         currentImageIndex++;
-                //         updateLightbox();
-                //     }
-                //     break;
+                }
+            });
+
+            // Close lightbox on close button click
+            closeBtn.on('click', function(e) {
+                e.stopPropagation();
+                closeLightbox();
+            });
+
+            // Keyboard navigation (disabled arrow keys)
+            $(document).on('keydown.lightbox', function(e) {
+                switch (e.keyCode) {
+                    case 27: // ESC key
+                        closeLightbox();
+                        break;
+                        // case 37: // Left arrow (disabled)
+                        //     if (currentImageIndex > 0) {
+                        //         currentImageIndex--;
+                        //         updateLightbox();
+                        //     }
+                        //     break;
+                        // case 39: // Right arrow (disabled)
+                        //     if (currentImageIndex < galleryImages.length - 1) {
+                        //         currentImageIndex++;
+                        //         updateLightbox();
+                        //     }
+                        //     break;
+                }
+            });
+
+            // Function to update lightbox content
+            function updateLightbox() {
+                var newImage = galleryImages[currentImageIndex];
+                lightboxImg.attr('src', newImage.src).attr('alt', newImage.alt);
+                // counter.text((currentImageIndex + 1) + ' / ' + galleryImages.length); // disabled
+
+                // Update navigation buttons (disabled)
+                // prevBtn.prop('disabled', currentImageIndex === 0);
+                // nextBtn.prop('disabled', currentImageIndex === galleryImages.length - 1);
+
+                // Reset image animation
+                lightboxImg.removeClass('loaded');
+                lightboxImg.on('load', function() {
+                    lightboxImg.addClass('loaded');
+                });
             }
-        });
-        
-        // Function to update lightbox content
-        function updateLightbox() {
-            var newImage = galleryImages[currentImageIndex];
-            lightboxImg.attr('src', newImage.src).attr('alt', newImage.alt);
-            // counter.text((currentImageIndex + 1) + ' / ' + galleryImages.length); // disabled
-            
-            // Update navigation buttons (disabled)
-            // prevBtn.prop('disabled', currentImageIndex === 0);
-            // nextBtn.prop('disabled', currentImageIndex === galleryImages.length - 1);
-            
-            // Reset image animation
-            lightboxImg.removeClass('loaded');
+
+            // Function to close lightbox
+            function closeLightbox() {
+                lightbox.fadeOut(300, function() {
+                    $(this).remove();
+                    $('body').css('overflow', '');
+                    $(document).off('keydown.lightbox');
+                });
+            }
+
+            // Add loading animation
             lightboxImg.on('load', function() {
                 lightboxImg.addClass('loaded');
             });
         }
-        
-        // Function to close lightbox
-        function closeLightbox() {
-            lightbox.fadeOut(300, function() {
-                $(this).remove();
-                $('body').css('overflow', '');
-                $(document).off('keydown.lightbox');
-            });
-        }
-        
-        // Add loading animation
-        lightboxImg.on('load', function() {
-            lightboxImg.addClass('loaded');
-        });
-    }
-});
+    });
 </script>

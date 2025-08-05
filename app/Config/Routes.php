@@ -17,5 +17,8 @@ $routes->get('rusks-and-cookies', 'Product::rusksCookies');
 $routes->get('namkeen-snacks', 'Product::namkeenSnacks');
 $routes->get('fryums-snacks', 'Product::fryumsSnacks');
 
+// Product
+$routes->get('product/(:any)', 'Product::productDetails/$1');
+
 // Forms
 $routes->post('/forms/home_contact', 'Forms::homeContact');

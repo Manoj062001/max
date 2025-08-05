@@ -2,14 +2,18 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductModel;
+
 class Product extends BaseController
 {
     private $data;
+    private $productmodel;
 
     public function __construct()
     {
         $this->data = [];
-        
+        $this->productmodel = new ProductModel();
+
         $this->data['title'] = 'Products - Maxvita Foods Pvt Ltd';
         $this->data['meta_description'] = '';
         $this->data['active'] = '';
@@ -17,27 +21,29 @@ class Product extends BaseController
 
     public function potatoChips(): string
     {
+        $this->data['products'] = $this->productmodel->select('name, slug, image, new, price')->where('type', 'Potato Chips')->orderBy('id', 'ASC')->findAll();
+
         $this->data['title'] = 'Potato Chips - Maxvita Foods';
         $this->data['meta_description'] = 'Discover premium quality potato chips from Maxvita Foods. Made with care in Karnataka, India.';
-        $this->data['active'] = 'potato-chips';
+        $this->data['active'] = 'product';
         $this->data['category'] = 'Potato Chips';
-        $this->data['category_slug'] = 'potato-chips';
 
         return view('main/layouts/header', $this->data)
-            . view('main/products/potato-chips', $this->data)
+            . view('main/products/category', $this->data)
             . view('main/layouts/footer', $this->data);
     }
 
     public function cornSnacks(): string
     {
+        $this->data['products'] = $this->productmodel->select('name, slug, image, new, price')->where('type', 'Corn Snacks')->orderBy('id', 'ASC')->findAll();
+       
         $this->data['title'] = 'Baked Corn Snacks - Maxvita Foods';
         $this->data['meta_description'] = 'Explore our delicious baked corn snacks from Maxvita Foods. Healthy and tasty snacks for everyone.';
-        $this->data['active'] = 'corn-snacks';
+        $this->data['active'] = 'product';
         $this->data['category'] = 'Baked Corn Snacks';
-        $this->data['category_slug'] = 'corn-snacks';
 
         return view('main/layouts/header', $this->data)
-            . view('main/products/corn-snacks', $this->data)
+            . view('main/products/category', $this->data)
             . view('main/layouts/footer', $this->data);
     }
 
@@ -79,4 +85,21 @@ class Product extends BaseController
             . view('main/products/fryums-snacks', $this->data)
             . view('main/layouts/footer', $this->data);
     }
-} 
+
+    public function productDetails($slug): string
+    {
+        $this->data['product'] = $this->productmodel->where('slug', $slug)->first();
+
+        if ($this->data['product']) {
+            $this->data['title'] = $this->data['product']['name'] . ' - Maxvita Foods';
+            $this->data['meta_description'] = '';
+            $this->data['active'] = 'product';
+
+            return view('main/layouts/header', $this->data)
+                . view('main/products/details', $this->data)
+                . view('main/layouts/footer', $this->data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+    }
+}
