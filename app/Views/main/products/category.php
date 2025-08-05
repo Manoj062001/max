@@ -14,9 +14,9 @@
             <div class="singleproduct col-md-3 wow bounceInUp" data-wow-delay=".2s">
                 <div class="singleproductinner">
                     <?php if ($product['new']) : ?>
-                        <img class="newbadge" src="img/icons/new.png">
+                        <img class="newbadge" src="<?= base_url('assets/img/icons/new.png') ?>">
                     <?php endif ?>
-                    <img class="" src="img/product/<?= $product['image'] ?>" width="100%" alt="">
+                    <img class="" src="<?= base_url('assets/img/product/' . esc($product['image'])) ?>" width="100%" alt="">
                     <p class="price"><?= $product['price'] ?></p>
                     <h5 class="text-truncate"><?= $product['name'] ?></h5>
                     <a href="<?= base_url('product/' . esc($product['slug'])) ?>" class="btn btn-primary btn-view">View Product</a>
@@ -30,3 +30,7 @@
     endforeach ?>
 
 </div>
+
+                        
+
+                    

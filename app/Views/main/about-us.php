@@ -6,7 +6,7 @@
     </div>
     <div class="row align-items-center bg-light m-0">
         <div class="col-lg-5 p-0">
-            <img src="assets/images/about.jpg" width="100%" alt="">
+            <img src="assets/img/about.jpg" width="100%" alt="">
         </div>
         <div class="col-lg-7 pr-0">
             <p class="p-3">

@@ -15,6 +15,7 @@
    <link rel="stylesheet" href="<?= base_url('assets/css/animate.css') ?>">
    <link rel="stylesheet" href="<?= base_url('assets/css/style.css?v=3.5') ?>">
    <link rel="stylesheet" href="<?= base_url('assets/css/newstyles.css?v=3.5') ?>">
+   
 
    <title><?= esc($title) ?></title>
 
@@ -33,7 +34,7 @@
    <div class="container mt-3">
       <nav class="navbar navbar-expand-lg navbar-light navbar-bg sticky-top">
          <a class="navbar-brand" href="<?= base_url() ?>">
-            <img src="img/maxvita-logo-small.png" alt="Maxvita Logo">
+            <img src="<?= base_url('assets/img/maxvita-logo-small.png') ?>" alt="Maxvita Logo">
          </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,28 +43,28 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                <li class="nav-item <?= $active == 'index' ? 'active' : '' ?>">
-                  <a class="nav-link" href="/">Home</a>
+                  <a class="nav-link" href="<?= base_url() ?>">Home</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="about-us">About</a>
+                  <a class="nav-link" href="<?= base_url('about-us') ?>">About</a>
                </li>
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      Products
                   </a>
                   <div class="dropdown-menu imgdropdown" aria-labelledby="navbarDropdown">
-                     <a class="dropdown-item potatochips" href="potato-chips"><img src="img/product/tomato-ketchup.png" alt=""> Potato Chips</a>
-                     <a class="dropdown-item bakedcornsnacks" href="corn-snacks"><img src="img/product/corn-rings-chatpata-masala.png" alt=""> Baked Corn Snacks</a>
-                     <a class="dropdown-item namkeensnacks" href="namkeen-snacks"><img src="img/product/karumkure-chat-masala.png" alt=""> Namkeen Snacks</a>
-                     <a class="dropdown-item fryumssnacks" href="fryums-snacks"><img src="img/product/crunchy-noodles-veg-biriyani.png" alt=""> Fryums Snacks</a>
-                     <a class="dropdown-item rusks" href="rusks-and-cookies"><img src="img/product/premium-milk-rusk.png" alt=""> Rusks and Cookies</a>
+                     <a class="dropdown-item potatochips" href="<?= base_url('potato-chips') ?>"><img src="<?= base_url('assets/img/product/tomato-ketchup.png') ?>" alt="Potato Chips"> Potato Chips</a>
+                     <a class="dropdown-item bakedcornsnacks" href="<?= base_url('corn-snacks') ?>"><img src="<?= base_url('assets/img/product/corn-rings-chatpata-masala.png') ?>" alt="Baked Corn Snacks"> Baked Corn Snacks</a>
+                     <a class="dropdown-item namkeensnacks" href="<?= base_url('namkeen-snacks') ?>"><img src="<?= base_url('assets/img/product/karumkure-chat-masala.png') ?>" alt="Namkeen Snacks"> Namkeen Snacks</a>
+                     <a class="dropdown-item fryumssnacks" href="<?= base_url('fryums-snacks') ?>"><img src="<?= base_url('assets/img/product/crunchy-noodles-veg-biriyani.png') ?>" alt="Fryums Snacks"> Fryums Snacks</a>
+                     <a class="dropdown-item rusks" href="<?= base_url('rusks-and-cookies') ?>"><img src="<?= base_url('assets/img/product/premium-milk-rusk.png') ?>" alt="Rusks and Cookies"> Rusks and Cookies</a>
                   </div>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="blog">News</a>
+                  <a class="nav-link" href="<?= base_url('blog') ?>">News</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="contact-us">Contact Us</a>
+                  <a class="nav-link" href="<?= base_url('contact-us') ?>">Contact Us</a>
                </li>
             </ul>
          </div>
