@@ -403,7 +403,7 @@ body {
 }
 .maincontainer {
     background-color: #00aae7;
-    background-image: url(../img/bg-cat-top.jpg), url(../images/bg-cat-btm.jpg);
+    background-image: url(../img/bg-cat-top.jpg), url(../img/bg-cat-btm.jpg);
     background-position: right top, left bottom;
     background-repeat: no-repeat, no-repeat;
     padding: 0em 4em 5em 4em;

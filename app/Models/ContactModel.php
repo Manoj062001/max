@@ -13,7 +13,7 @@ class ContactModel extends Model
     protected $useSoftDeletes = true;
     protected $useTimestamps = true;
 
-    protected $allowedFields = ['name', 'e-mail', 'address', 'message', 'status'];
+    protected $allowedFields = ['name', 'email', 'address', 'message', 'status'];
 
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

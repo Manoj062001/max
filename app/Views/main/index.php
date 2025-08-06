@@ -291,7 +291,7 @@
 
         </div>
         <div class="col-md-5 contact-form">
-            <form id="home-contact-form" method="post" action="<?= base_url('forms/home-contact') ?>">
+            <form id="contact-form" method="post" action="<?= base_url('forms/contact') ?>">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="name">Name</label>

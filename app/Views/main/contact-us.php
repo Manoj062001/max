@@ -23,7 +23,8 @@
             </div>
         </div>
         <div class="col-md-6 contact-form">
-            <form id="contactForm" method="post">
+            <form id="contact-form" method="post" action="<?= base_url('forms/contact') ?>">
+                <?= csrf_field() ?>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="name">Name</label>

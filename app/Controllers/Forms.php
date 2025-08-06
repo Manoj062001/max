@@ -2,56 +2,73 @@
 
 namespace App\Controllers;
 
-use App\Models\HomeContactModel;
+use App\Models\ContactModel;
 
 class Forms extends BaseController
 {
-    private $home_contactmodel;
+    private $contactmodel;
 
     public function __construct()
     {
         helper(['text', 'form', 'url']);
-        $this->home_contactmodel =  new HomeContactModel();
+        $this->contactmodel =  new ContactModel();
     }
 
-    public function bannerAppointment()
+    public function contact()
     {
         if ($this->request->is('post')) {
-            $post = $this->request->getPost(['name', 'email', 'address', 'message', 'type', 'g-recaptcha-response']);
+            $post = $this->request->getPost(['name', 'email', 'address', 'message', 'type']);
             $name = strip_tags(trim($post['name']));
             $email = trim($post['email']);
             $address = trim($post['address']);
             $message = trim($post['message']);
 
+            // Basic validation
+            if (empty($name) || empty($email) || empty($message)) {
+                http_response_code(400);
+                echo json_encode(['type' => 'error', 'message' => 'Please fill in all required fields.']);
+                exit;
+            }
+
+            // Email validation
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                http_response_code(400);
+                echo json_encode(['type' => 'error', 'message' => 'Please enter a valid email address.']);
+                exit;
+            }
+
+            // Check for spam links in message
             if (strpos($message, "http") !== false) {
                 http_response_code(400);
                 echo json_encode(['type' => 'error', 'message' => 'Something went wrong!']);
                 exit;
             }
 
-            if ($response['success'] == true) {
-                $insertflag = $this->home_contactmodel->save([
-                    'name' => $name,
-                    'email' => $email,
-                    'email' => $email,
-                    'address' => $address,
+            // Insert into database
+            $insertflag = $this->contactmodel->save([
+                'name' => $name,
+                'email' => $email,
+                'address' => $address,
+                'message' => $message,
+                'status' => 'new'
+            ]);
+
+            if ($insertflag) {
+                $emailMsg = $this->arrayToEmailTable([
+                    'Name' => $name,
+                    'Email' => $email,
+                    'Address' => $address,
+                    'Message' => $message,
                 ]);
-                if ($insertflag) {
-                    $emailMsg = $this->arrayToEmailTable([
-                        'Name' => $name,
-                        'email' => $email,
-                        'address' => $address,
-                        'Message' => $message,
-                    ]);
 
-                    $this->sendEmail('manoj@ipopi.in', 'Home Page Contact - ' . $name, $emailMsg);
+                // Try to send email, but don't fail if it doesn't work
+                $emailSent = $this->sendEmail('manoj@ipopi.in', 'Home Page Contact - ' . $name, $emailMsg);
 
-                    http_response_code(200);
-                    echo json_encode(['type' => 'success', 'message' => 'Thank You! Your message has been sent.']);
-                } else {
-                    http_response_code(500);
-                    echo json_encode(['type' => 'error', 'message' => 'Oops! Something went wrong and we couldn\'t send your message.']);
-                }
+                http_response_code(200);
+                echo json_encode(['type' => 'success', 'message' => 'Thank You! Your message has been sent.']);
+            } else {
+                http_response_code(500);
+                echo json_encode(['type' => 'error', 'message' => 'Oops! Something went wrong and we couldn\'t send your message.']);
             }
         } else {
             http_response_code(400);

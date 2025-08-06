@@ -21,4 +21,4 @@ $routes->get('fryums-snacks', 'Product::fryumsSnacks');
 $routes->get('product/(:any)', 'Product::productDetails/$1');
 
 // Forms
-$routes->post('/forms/home_contact', 'Forms::homeContact');
+$routes->post('/forms/contact', 'Forms::contact');

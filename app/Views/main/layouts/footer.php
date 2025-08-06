@@ -33,31 +33,9 @@
 
 
 <script src="<?= base_url('assets/js/script.js') ?>"></script>
+<script src="<?= base_url('assets/js/forms.js') ?>"></script>
 <script>
    new WOW().init();
-
-   // $('.alertmsg').hide();
-   // $('.alerterror').hide();
-   // $('.alertsuccess').hide();
-   $("#contactForm").submit(function(e) {
-      e.preventDefault(); // avoid to execute the actual submit of the form.
-      var form = $(this);
-      var url = 'db/contactus.php';
-      $.ajax({
-         type: "POST",
-         url: url,
-         data: form.serialize(), // serializes the form's elements.
-         success: function(data) {
-            //alert(data); // show response from the php script.
-            $('.alertmsg').html(data);
-            $('.alertmsg').show();
-
-            if (data.search('alertsuccess') != -1) {
-               $("#contactForm").trigger("reset");
-            }
-         }
-      });
-   });
 </script>
 </body>
 
