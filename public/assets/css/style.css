@@ -131,12 +131,10 @@ body {
 .category h3 {
     color: white;
     padding: .5em .8em .5em 0em;
-    text-align: right;
     overflow-wrap: break-word;
 }
 
 .category .btn-view {
-    float: right;
     margin-right: 1em;
     margin-bottom: 1em;
     background: white;
@@ -251,8 +249,6 @@ body {
     top: 31%;
     left: 0px;
     display: block !important;
-    border: 1px solid #33333385 !important;
-    background: #00000024 !important;
 }
 
 .owl-carousel-pro .owl-next {
@@ -262,8 +258,6 @@ body {
     top: 31%;
     right: 0px;
     display: block !important;
-    border: 1px solid #33333385 !important;
-    background: #00000024 !important;
 }
 
 .owl-carousel-pro .owl-prev i,

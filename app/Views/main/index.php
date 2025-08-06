@@ -97,48 +97,38 @@
       <div class="col-sm-12">
          <div class="owl-carousel owl-theme owl-carousel-cat">
             <div class="category potato item wow bounceInUp" data-wow-delay=".2s">
-               <a href="#">
                   <div class="cat-img">
                      <img src="<?= base_url('assets/img/category/potato.png') ?>" width="100%" alt="Potato Chips">
                   </div>
                   <h3>Potato Chips</h3>
-               </a>
                <a href="<?= base_url('potato-chips') ?>" class="btn btn-primary btn-view">View All</a>
             </div>
             <div class="category corn item wow bounceInUp" data-wow-delay=".3s">
-               <a href="#">
                   <div class="cat-img">
                      <img src="<?= base_url('assets/img/category/cheeseballs.png') ?>" width="100%" alt="Baked Corn Snacks">
                   </div>
                   <h3>Baked Corn Snacks</h3>
-               </a>
                <a href="<?= base_url('corn-snacks') ?>" class="btn btn-primary btn-view">View All</a>
             </div>
             <div class="category rusks item wow bounceInUp" data-wow-delay=".4s">
-               <a href="#">
                   <div class="cat-img">
                      <img src="<?= base_url('assets/img/category/rusks.png') ?>" width="100%" alt="Rusks and Cookies">
                   </div>
                   <h3>Rusks and Cookies</h3>
-               </a>
                <a href="<?= base_url('rusks-and-cookies') ?>" class="btn btn-primary btn-view">View All</a>
             </div>
             <div class="category namkeen item wow bounceInUp" data-wow-delay=".4s">
-               <a href="#">
                   <div class="cat-img">
                      <img src="<?= base_url('assets/img/category/namkeen.png') ?>" width="100%" alt="Namkeen Snacks">
                   </div>
                   <h3>Namkeen Snacks</h3>
-               </a>
                <a href="<?= base_url('namkeen-snacks') ?>" class="btn btn-primary btn-view">View All</a>
             </div>
             <div class="category fryums item wow bounceInUp" data-wow-delay=".2s">
-               <a href="#">
                   <div class="cat-img">
                      <img src="<?= base_url('assets/img/category/fryums.png') ?>" width="100%" alt="Fryums Snacks">
                   </div>
                   <h3>Fryums Snacks</h3>
-               </a>
                <a href="<?= base_url('fryums-snacks') ?>" class="btn btn-primary btn-view">View All</a>
             </div>
          </div>
@@ -157,7 +147,7 @@
         <?php foreach ($products as $product) :  ?>
             <div class="item popularproduct">
                 <img class="newbadge" src="<?= base_url('assets/img/icons/new.png') ?>">
-                <img class="ppimg" src="<?= base_url('assets/img/products/' . esc($product['image'])) ?>" width="100%" alt="">
+                <img class="" src="<?= base_url('assets/img/product/' . esc($product['image'])) ?>" width="100%" alt="">
                 <h5><?= esc($product['name']) ?></h5>
                 <a href="<?= base_url('product/' . esc($product['slug'])) ?>" class="btn btn-primary btn-popularview">Details</a>
             </div>

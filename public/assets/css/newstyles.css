@@ -1,6 +1,6 @@
 body {
     background-color: #f6bd08;
-    background-image: url(../images/header/all-bg.jpg);
+    background-image: url(../img/bg.jpg);
     font-family: 'Righteous', cursive;
     background-position: top;
     background-size: cover;
@@ -8,7 +8,7 @@ body {
 /* Header-start */
 .navbar-bg {
     background-color: #ff2d20;
-    background-image: url(../images/header/menu-bg.jpg);
+    background-image: url(../img/menu-bg.jpg);
     background-position: right top;
     background-repeat: no-repeat;
     border: none;
@@ -63,7 +63,7 @@ body {
 /* Owl Carousel Navigation Styling */
 .owl-nav {
     position: absolute;
-    top: 40%;
+    top: 22%;
     transform: translateY(-50%);
     width: 100%;
     pointer-events: none;
@@ -275,7 +275,7 @@ body {
 
 @media (max-width: 576px) {
     .owl-carousel .item {
-        height: 250px;
+        height: auto;
     }
     
     .owl-prev, .owl-next {
@@ -286,6 +286,9 @@ body {
     .nav-btn {
         font-size: 12px;
     }
+    .maincontainer {
+    padding: 0px !important;
+}
 }
 
 /* Categories Section Styles */
@@ -400,7 +403,7 @@ body {
 }
 .maincontainer {
     background-color: #00aae7;
-    background-image: url(../images/bg/bg-cat-top.jpg), url(../images/bg/bg-cat-btm.jpg);
+    background-image: url(../img/bg-cat-top.jpg), url(../images/bg-cat-btm.jpg);
     background-position: right top, left bottom;
     background-repeat: no-repeat, no-repeat;
     padding: 0em 4em 5em 4em;
@@ -446,7 +449,7 @@ body {
     }
     
     .category {
-        padding: 10px;
+        padding: 0px 0px;
     }
     
     .category h3 {
@@ -803,7 +806,7 @@ body {
 .aboutcontainer {
     background: #ffc51c;
     background-color: #ffe600;
-    background-image: url(../images/bg/bg-aboutus.jpg);
+    background-image: url(../img/bg-aboutus.jpg);
     background-position: right top;
     background-repeat: no-repeat;
 }
