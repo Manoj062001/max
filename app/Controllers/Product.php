@@ -89,6 +89,20 @@ class Product extends BaseController
             . view('main/layouts/footer', $this->data);
     }
 
+    public function test(): string
+    {
+        $this->data['products'] = $this->productmodel->select('name, slug, image, new, price')->where('type', 'test')->orderBy('id', 'ASC')->findAll();
+
+        $this->data['title'] = 'Fryums Snacks - Maxvita Foods';
+        $this->data['meta_description'] = 'Crunchy fryums snacks from Maxvita Foods. Perfect crispy snacks for all occasions.';
+        $this->data['active'] = 'product';
+        $this->data['category'] = 'test';
+
+        return view('main/layouts/header', $this->data)
+            . view('main/products/category', $this->data)
+            . view('main/layouts/footer', $this->data);
+    }
+
     public function productDetails($slug): string
     {
         $this->data['product'] = $this->productmodel->where('slug', $slug)->first();

@@ -16,9 +16,23 @@ $routes->get('corn-snacks', 'Product::cornSnacks');
 $routes->get('rusks-and-cookies', 'Product::rusksCookies');
 $routes->get('namkeen-snacks', 'Product::namkeenSnacks');
 $routes->get('fryums-snacks', 'Product::fryumsSnacks');
+$routes->get('test', 'Product::test');
 
 // Product
 $routes->get('product/(:any)', 'Product::productDetails/$1');
 
 // Forms
 $routes->post('/forms/contact', 'Forms::contact');
+
+// Admin
+$routes->group('admin/', static function ($routes) {
+    $routes->match(['get', 'post'], '/', 'Admin::index');
+    $routes->match(['get', 'post'], 'contact', 'Admin::contact');
+    $routes->match(['get', 'post'], 'product', 'Admin::product');
+    
+    $routes->match(['get', 'post'], 'addproduct', 'Admin::addproduct');
+    $routes->get('logout', 'Admin::logout');
+
+    
+
+});
