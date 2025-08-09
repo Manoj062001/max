@@ -35,6 +35,7 @@
                                         <th>Price</th>
                                         <th>Popular</th>
                                         <th>New</th>
+                                        <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                     <?php
@@ -48,6 +49,9 @@
                                             <td><?= esc($product['price']) ?></td>
                                             <td><?= $product['popular'] ? '1' : '0' ?></td>
                                             <td><?= $product['new'] ? '1' : '0' ?></td>
+                                            <td>
+                                                <a class="btn btn-sm btn-secondary" href="<?= esc(base_url()) ?>admin/editproduct/<?= esc($product['id']) ?>">Edit</a>
+                                            </td>
                                             <td class="">
                                                 <form method="post" action="<?= esc(base_url()) ?>admin/product">
                                                     <?= csrf_field() ?>

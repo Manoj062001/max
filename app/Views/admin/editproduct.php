@@ -5,7 +5,7 @@
                 <div class="page-title-box">
                     <div class="row align-items-center">
                         <div class="col-sm-12">
-                            <h4 class="page-title">Add Product</h4>
+                            <h4 class="page-title">Edit Product</h4>
                         </div>
                     </div>
                 </div>
@@ -35,17 +35,17 @@
                                     </div>
                                 <?php } ?>
 
-                                <form action="<?= esc(base_url()) ?>admin/addproduct" method="post" enctype="multipart/form-data">
+                                <form action="<?= esc(base_url()) ?>admin/editproduct/<?= esc($product['id']) ?>" method="post" enctype="multipart/form-data">
                                     <?= csrf_field() ?>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="name">Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Product name" value="<?= set_value('name') ?>" required>
+                                            <input type="text" class="form-control" id="name" name="name" value="<?= set_value('name', $product['name']) ?>" required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="slug">Slug</label>
-                                            <input type="text" class="form-control" id="slug" name="slug" placeholder="unique-product-slug" value="<?= set_value('slug') ?>" required>
+                                            <input type="text" class="form-control" id="slug" name="slug" value="<?= set_value('slug', $product['slug']) ?>" required>
                                         </div>
                                     </div>
 
@@ -56,50 +56,55 @@
                                                 <select class="form-control" id="type" name="type" required>
                                                     <option value="">Select Type</option>
                                                     <?php foreach ($types as $t) { ?>
-                                                        <option value="<?= esc($t) ?>" <?= set_select('type', $t, set_value('type') === $t) ?>><?= esc($t) ?></option>
+                                                        <option value="<?= esc($t) ?>" <?= set_select('type', $t, (set_value('type', $product['type']) === $t)) ?>><?= esc($t) ?></option>
                                                     <?php } ?>
                                                 </select>
                                             <?php } else { ?>
-                                                <input type="text" class="form-control" id="type" name="type" placeholder="e.g. potato-chips" value="<?= set_value('type') ?>" required>
+                                                <input type="text" class="form-control" id="type" name="type" value="<?= set_value('type', $product['type']) ?>" required>
                                             <?php } ?>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="price">Price</label>
-                                            <input type="text" class="form-control" id="price" name="price" placeholder="e.g. 10.00" value="<?= set_value('price') ?>" required>
+                                            <input type="text" class="form-control" id="price" name="price" value="<?= set_value('price', $product['price']) ?>" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="image">Image</label>
                                             <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                                            <?php if (!empty($product['image'])) { ?>
+                                                <div style="margin-top:8px;">
+                                                    <img src="<?= esc(base_url('assets/img/product/' . $product['image'])) ?>" alt="Current Image" style="max-height:120px;">
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Short description..."><?= set_value('description') ?></textarea>
+                                        <textarea class="form-control" id="description" name="description" rows="3"><?= set_value('description', $product['description']) ?></textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="ingredient">Ingredients</label>
-                                        <textarea class="form-control" id="ingredient" name="ingredient" rows="3" placeholder="Comma separated ingredients..."><?= set_value('ingredient') ?></textarea>
+                                        <textarea class="form-control" id="ingredient" name="ingredient" rows="3"><?= set_value('ingredient', $product['ingredient']) ?></textarea>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-2">
                                             <div class="form-check" style="padding-top: 32px;">
-                                                <input class="form-check-input" type="checkbox" id="popular" name="popular" <?= set_checkbox('popular', '1') ?>>
+                                                <input class="form-check-input" type="checkbox" id="popular" name="popular" <?= set_checkbox('popular', '1', (bool) $product['popular']) ?>>
                                                 <label class="form-check-label" for="popular">Popular</label>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <div class="form-check" style="padding-top: 32px;">
-                                                <input class="form-check-input" type="checkbox" id="new" name="new" <?= set_checkbox('new', '1') ?>>
+                                                <input class="form-check-input" type="checkbox" id="new" name="new" <?= set_checkbox('new', '1', (bool) $product['new']) ?>>
                                                 <label class="form-check-label" for="new">New</label>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group text-right">
-                                        <button type="submit" class="btn btn-primary">Add Product</button>
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
                                     </div>
                                 </form>
                             </div>

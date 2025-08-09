@@ -31,8 +31,6 @@ $routes->group('admin/', static function ($routes) {
     $routes->match(['get', 'post'], 'product', 'Admin::product');
     
     $routes->match(['get', 'post'], 'addproduct', 'Admin::addproduct');
+    $routes->match(['get', 'post'], 'editproduct/(:num)', 'Admin::editproduct/$1');
     $routes->get('logout', 'Admin::logout');
-
-    
-
 });

@@ -1,6 +1,6 @@
  <!-- Footer -->
  <footer class="footer">
-     © 2024 <span class=""> - Crafted with <i class="mdi mdi-heart text-danger"></i> by ipopi ads</span>
+     © 2025 <span class=""> - Crafted with <i class="mdi mdi-heart text-danger"></i> by ipopi ads</span>
  </footer>
 
  <!-- End Footer -->
